@@ -1,0 +1,22 @@
+.li {
+  padding: 8px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.title, .titleCompleted {
+  margin-right: 5px;
+}
+
+.titleCompleted {
+  text-decoration: line-through;
+}

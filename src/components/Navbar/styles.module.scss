@@ -1,0 +1,11 @@
+.navbar {
+  width: 70%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.link {
+  &:active {
+    color: #0000FF;
+  }
+}
