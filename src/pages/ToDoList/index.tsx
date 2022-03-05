@@ -14,6 +14,7 @@ const ToDoListPage: FC = () => {
     form: formStyle,
     listContainer: listContainerStyle,
     altText: altTextStyle,
+    pagination: paginationStyle,
   } = styles;
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useAppDispatch();
@@ -47,7 +48,9 @@ const ToDoListPage: FC = () => {
           )}
         </ul>
       </div>
-      <Pagination onClick={handleClick} numberOfPages={numberOfPages} />
+      <div className={paginationStyle}>
+        <Pagination onClick={handleClick} numberOfPages={numberOfPages} />
+      </div>
     </div>
   );
 };

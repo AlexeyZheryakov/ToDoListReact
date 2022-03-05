@@ -13,7 +13,6 @@
   color: #fff;
   background-color: #007bff;
   border-color: #fff;
-  margin-right: 5px;
   
   &:hover {
     background-color: #0069D9;
@@ -22,6 +21,10 @@
 
   &:active {
     box-shadow: 0 0 7px #82B1E5;
+  }
+
+  &:not(:last-child) {
+    margin-right: 5px;
   }
   
 }

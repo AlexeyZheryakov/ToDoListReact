@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react';
-import { numberPageCreator } from '../utils';
 import styles from './styles.module.scss';
 
 interface IProps {
@@ -10,8 +9,11 @@ interface IProps {
 const Pagination: FC<IProps> = ({ numberOfPages, onClick }) => {
   const { active: activeStyle, main: mainStyle, number_page: numberPageStyle } = styles;
   const [active, setActive] = useState(1);
-  const pages = numberPageCreator(numberOfPages);
   const isActive = (index: number) => (index === active ? `${activeStyle} ${numberPageStyle}` : numberPageStyle);
+
+  const numberPageCreator = (index: number) => {
+    return index + 1;
+  };
 
   const handleClick = (pageNumber: number) => () => {
     onClick(pageNumber);
@@ -20,9 +22,9 @@ const Pagination: FC<IProps> = ({ numberOfPages, onClick }) => {
 
   return (
     <div className={mainStyle}>
-      {pages.map((pageNumber) => (
-        <div onClick={handleClick(pageNumber)} className={isActive(pageNumber)} key={pageNumber}>
-          {pageNumber}
+      {new Array(numberOfPages).fill(null).map((_, index) => (
+        <div onClick={handleClick(numberPageCreator(index))} className={isActive(numberPageCreator(index))} key={index}>
+          {numberPageCreator(index)}
         </div>
       ))}
     </div>

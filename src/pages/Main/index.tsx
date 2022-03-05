@@ -12,17 +12,20 @@ const Main = () => {
     img: imgStyle,
     descriptionContainer: descriptionContainerStyle,
     description: descriptionStyle,
+    header: headerStyle,
   } = styles;
 
   return (
     <div className={containerStyle}>
-      <Navbar menu={MENU} />
+      <header className={headerStyle}>
+        <Navbar menu={MENU} />
+      </header>
       <div className={contentStyle}>
         <div className={imgContainerStyle}>
           <img className={imgStyle} src={logo} alt="To Do List Logo" />
         </div>
         <div className={descriptionContainerStyle}>
-          <span className={descriptionStyle}>Данное приложение разработано для демонcтрации моих Hard skills</span>
+          <span className={descriptionStyle}>Made especially for WelbeX</span>
         </div>
       </div>
     </div>
