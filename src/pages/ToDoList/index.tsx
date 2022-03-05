@@ -39,13 +39,12 @@ const ToDoListPage: FC = () => {
       </div>
       <div className={listContainerStyle}>
         <ul>
-          {todos.length ? (
+          {!!todos.length ? (
             getTodosByPage(todos, currentPage).map((todo) => <ToDoItem key={todo.id} toDoItem={todo} />)
-          ) : error ? (
-            <h2 className={altTextStyle}>{`Error: ${error}`}</h2>
           ) : (
             <h2 className={altTextStyle}>The list is empty</h2>
           )}
+          {!!error && <h2 className={altTextStyle}>{`Error: ${error}`}</h2>}
         </ul>
       </div>
       <div className={paginationStyle}>

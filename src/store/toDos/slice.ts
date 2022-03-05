@@ -32,7 +32,8 @@ export const toDosSlice = createSlice({
       state.todos = state.todos.map((todo) => {
         if (todo.id === id) {
           return { ...todo, completed: !todo.completed };
-        } else return todo;
+        }
+        return todo;
       });
     },
   },
