@@ -28,8 +28,12 @@ export const toDosSlice = createSlice({
       state.todos[index] = newTodo;
       state.currentTodo = null;
     },
-    removeCurrentTodo(state) {
-      state.currentTodo = null;
+    changeCompleted(state, { payload: id }: PayloadAction<number>) {
+      state.todos = state.todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed: !todo.completed };
+        } else return todo;
+      });
     },
   },
   extraReducers: (builder) => {
@@ -57,6 +61,6 @@ export const toDosSlice = createSlice({
   },
 });
 
-export const { getToDo, addToDo, removeToDo, removeCurrentTodo, editToDo } = toDosSlice.actions;
+export const { getToDo, addToDo, removeToDo, editToDo, changeCompleted } = toDosSlice.actions;
 
 export default toDosSlice.reducer;

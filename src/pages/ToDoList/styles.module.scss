@@ -1,7 +1,14 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
   width: 40%;
   padding: 15px 15px;
   margin: 0 auto;
+}
+
+.listContainer {
+  flex: 1 1 auto;
 }
 
 .form {

@@ -1,16 +1,21 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import ToDoItem from '../../components/ToDoItem';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import getToDos from '../../store/toDos/thunks';
 import AddForm from '../../components/Form';
 import Pagination from '../../components/Pagination';
-import { IToDo } from '../../api/types';
+import { PAGE_LIMIT } from './config';
+import { getTodosByPage } from './utils';
 
 const ToDoListPage: FC = () => {
+  const {
+    container: containerStyle,
+    form: formStyle,
+    listContainer: listContainerStyle,
+    altText: altTextStyle,
+  } = styles;
   const [currentPage, setCurrentPage] = useState(1);
-  const [todosForRender, setTodosForRender] = useState<IToDo[]>([]);
-  const PAGE_LIMIT = 10;
   const dispatch = useAppDispatch();
   const {
     todoStore: { todos, error },
@@ -26,26 +31,22 @@ const ToDoListPage: FC = () => {
     dispatch(getToDos());
   }, []);
 
-  useEffect(() => {
-    if (todos.length) {
-      setTodosForRender([...todos].splice((currentPage - 1) * PAGE_LIMIT, PAGE_LIMIT));
-    }
-  }, [currentPage, todos]);
-
   return (
-    <div className={styles.container}>
-      <div className={styles.form}>
+    <div className={containerStyle}>
+      <div className={formStyle}>
         <AddForm value="" />
       </div>
-      <ul>
-        {todos.length ? (
-          todosForRender.map((todo) => <ToDoItem key={todo.id} toDoItem={todo} />)
-        ) : error ? (
-          <h2 className={styles.altText}>{`Error: ${error}`}</h2>
-        ) : (
-          <h2 className={styles.altText}>The list is empty пуст</h2>
-        )}
-      </ul>
+      <div className={listContainerStyle}>
+        <ul>
+          {todos.length ? (
+            getTodosByPage(todos, currentPage).map((todo) => <ToDoItem key={todo.id} toDoItem={todo} />)
+          ) : error ? (
+            <h2 className={altTextStyle}>{`Error: ${error}`}</h2>
+          ) : (
+            <h2 className={altTextStyle}>The list is empty</h2>
+          )}
+        </ul>
+      </div>
       <Pagination onClick={handleClick} numberOfPages={numberOfPages} />
     </div>
   );

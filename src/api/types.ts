@@ -4,9 +4,3 @@ export interface IToDo {
   title: string;
   completed: boolean;
 }
-
-export interface IToDoForPost {
-  userId?: number;
-  title: string;
-  completed: boolean;
-}

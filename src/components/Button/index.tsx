@@ -9,7 +9,9 @@ interface IProps {
 }
 
 const MyButton: FC<IProps> = ({ text, type, onClick, mr }) => {
-  const className = mr ? `${styles.btn_mr} ${styles.btn}` : styles.btn;
+  const { btn_mr: btnMrStyle, btn: btnStyle } = styles;
+  const className = mr ? `${btnMrStyle} ${btnStyle}` : btnStyle;
+
   const handleClick = () => {
     onClick?.();
   };
