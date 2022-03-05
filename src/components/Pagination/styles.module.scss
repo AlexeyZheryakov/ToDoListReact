@@ -5,15 +5,14 @@
   text-align: center;
 }
 
-.number {
+.number_page {
   width: 25px;
   height: 25px;
   border-radius: 5px;
   padding: 2px 2px;
   color: #fff;
   background-color: #007bff;
-  border-color: #007bff;
-  margin-right: 5px;
+  border-color: #fff;
   
   &:hover {
     background-color: #0069D9;
@@ -23,5 +22,13 @@
   &:active {
     box-shadow: 0 0 7px #82B1E5;
   }
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
   
+}
+
+.active {
+  outline: 2px solid #000000;
 }

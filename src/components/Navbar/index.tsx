@@ -8,12 +8,14 @@ interface IProps {
 }
 
 const Navbar: FC<IProps> = ({ menu }) => {
+  const { navbar: navbarStyle, link: linkStyle, list: listStyle, li: liStyle } = styles;
+
   return (
-    <nav className={styles.navbar}>
-      <ul className={styles.menuList}>
+    <nav className={navbarStyle}>
+      <ul className={listStyle}>
         {menu.map(({ label, link }, index) => (
-          <li key={index}>
-            <Link className={styles.link} to={link}>
+          <li className={liStyle} key={index}>
+            <Link className={linkStyle} to={link}>
               {label}
             </Link>
           </li>

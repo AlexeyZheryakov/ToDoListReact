@@ -7,20 +7,24 @@ interface IProps {
 }
 
 const Pagination: FC<IProps> = ({ numberOfPages, onClick }) => {
-  const [active, setActive] = useState(0);
-  const handleClick = (i: number) => () => {
-    onClick(i);
-    setActive(i);
+  const { active: activeStyle, main: mainStyle, number_page: numberPageStyle } = styles;
+  const [active, setActive] = useState(1);
+  const isActive = (index: number) => (index === active ? `${activeStyle} ${numberPageStyle}` : numberPageStyle);
+
+  const numberPageCreator = (index: number) => {
+    return index + 1;
   };
-  const count = [];
-  for (let i = 0; i < numberOfPages; i++) {
-    count.push(i + 1);
-  }
+
+  const handleClick = (pageNumber: number) => () => {
+    onClick(pageNumber);
+    setActive(pageNumber);
+  };
+
   return (
-    <div className={styles.main}>
-      {count.map((i) => (
-        <div onClick={handleClick(i)} className={styles.number} key={i}>
-          {i}
+    <div className={mainStyle}>
+      {new Array(numberOfPages).fill(null).map((_, index) => (
+        <div onClick={handleClick(numberPageCreator(index))} className={isActive(numberPageCreator(index))} key={index}>
+          {numberPageCreator(index)}
         </div>
       ))}
     </div>

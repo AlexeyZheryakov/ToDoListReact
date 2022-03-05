@@ -1,11 +1,12 @@
 .li {
-  padding: 8px;
+  padding: 0 10px;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: 5px;
   margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 50px;
 }
 
 .actions {
@@ -14,6 +15,7 @@
 }
 
 .title, .titleCompleted {
+  flex-grow: 1;
   margin-right: 5px;
 }
 

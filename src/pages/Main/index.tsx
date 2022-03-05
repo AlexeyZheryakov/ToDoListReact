@@ -5,15 +5,27 @@ import Navbar from '../../components/Navbar';
 import { MENU } from '../../components/Navbar/config';
 
 const Main = () => {
+  const {
+    container: containerStyle,
+    content: contentStyle,
+    imgContainer: imgContainerStyle,
+    img: imgStyle,
+    descriptionContainer: descriptionContainerStyle,
+    description: descriptionStyle,
+    header: headerStyle,
+  } = styles;
+
   return (
-    <div className={styles.container}>
-      <Navbar menu={MENU} />
-      <div className={styles.content}>
-        <div className={styles.imgContainer}>
-          <img className={styles.img} src={logo} alt="To Do List" />
+    <div className={containerStyle}>
+      <header className={headerStyle}>
+        <Navbar menu={MENU} />
+      </header>
+      <div className={contentStyle}>
+        <div className={imgContainerStyle}>
+          <img className={imgStyle} src={logo} alt="To Do List Logo" />
         </div>
-        <div className={styles.descriptionContainer}>
-          <span className={styles.description}>Данное приложение разработано для демонcтрации моих Hard skills</span>
+        <div className={descriptionContainerStyle}>
+          <span className={descriptionStyle}>Made especially for WelbeX</span>
         </div>
       </div>
     </div>
